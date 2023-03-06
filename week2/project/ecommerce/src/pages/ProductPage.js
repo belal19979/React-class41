@@ -16,7 +16,7 @@ function ProductPage() {
       {!data && loading === false && (
         <h1>Sorry , there is no product with this Id</h1>
       )}
-      <Link to={'/products'}>back to products</Link>
+      <Link to={'/'}>back to products</Link>
     </>
   );
 }
