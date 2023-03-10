@@ -1,0 +1,15 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+}
+.links a {
+  padding: 30px;
+  font-weight: bold;
+  font-size: 30px;
+}

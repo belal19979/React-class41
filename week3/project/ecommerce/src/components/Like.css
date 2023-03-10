@@ -1,0 +1,39 @@
+.img-container {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.fav {
+  cursor: pointer;
+}
+
+/* if (fav) {
+  return (
+    <div className="img-container">
+      <img
+        alt="heart"
+        src={heartSolidSvg}
+        className="fav"
+        onClick={removeClick}
+      />
+    </div>
+  );
+} else {
+  return (
+    <div className="img-container">
+      {isFav ? (
+        <img
+          alt="heart"
+          src={heartSolidSvg}
+          className="fav"
+          onClick={removeClick}
+        />
+      ) : (
+        <img alt="heart" src={heartSvg} className="fav" onClick={addClick} />
+      )}
+    </div>
+  );
+} */
