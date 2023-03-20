@@ -1,46 +1,28 @@
 import Product from './Product';
 import './Products.css';
 import useFetch from '../useFetch';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
 export default function Products({ category }) {
-  const [filteredProducts, setFilteredProducts] = useState([]);
   const {
     data: allProducts,
     loading,
     error,
   } = useFetch('https://fakestoreapi.com/products');
 
-  const { data: filtered } = useFetch(
-    `https://fakestoreapi.com/products/category/${category}`,
-  );
-
-  useEffect(() => {
-    category && setFilteredProducts(filtered);
-  }, [filtered, category]);
+  let productsToShow = allProducts;
+  if (category) {
+    const customizedCategory = category.slice(6);
+    productsToShow = allProducts.filter(
+      ({ category }) => category === customizedCategory,
+    );
+  }
 
   return (
-    <>
-      {loading && <h1>{loading}</h1>}
-      {error && <h1>{error}</h1>}
-      <ul className="products">
-        {filteredProducts?.length === 0
-          ? allProducts?.map((product) => {
-              return (
-                <Link key={product.id} to={`/products/${product.id}`}>
-                  <Product product={product} category={category} />
-                </Link>
-              );
-            })
-          : filteredProducts?.map((product) => {
-              return (
-                <Link key={product.id} to={`/products/${product.id}`}>
-                  <Product product={product} category={category} />
-                </Link>
-              );
-            })}
-      </ul>
-    </>
+    <ul className="products">
+      {loading && <h3>{loading}</h3>}
+      {error && <h2>{error}</h2>}
+      {productsToShow.map((product) => (
+        <Product key={product.id} product={product} />
+      ))}
+    </ul>
   );
 }

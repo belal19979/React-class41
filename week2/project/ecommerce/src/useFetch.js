@@ -7,7 +7,6 @@ function useFetch(url) {
   const [error, setError] = useState(null);
 
   const getData = async (url) => {
-    // console.log(url);
     try {
       setLoading('loading ..');
       setError(null);
